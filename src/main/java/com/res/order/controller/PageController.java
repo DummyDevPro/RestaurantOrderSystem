@@ -1,7 +1,10 @@
 package com.res.order.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.res.order.dao.Menu;
 
 @Controller
 public class PageController {
@@ -16,13 +19,9 @@ public class PageController {
 	}
 
 	@GetMapping("/addMenu")
-	public String toAddMenuPage() {
+	public String toAddMenuPage(Model model) {
+		model.addAttribute("menuObj", new Menu());
 		return "add_menu_item";
-	}
-
-	@GetMapping("/adminAllMenu")
-	public String toAdminAllMenuPage() {
-		return "admin_all_menu";
 	}
 
 	@GetMapping("/editMenu")

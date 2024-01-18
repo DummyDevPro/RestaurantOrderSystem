@@ -72,6 +72,10 @@ public class MenuController {
 			model.addAttribute("setMenus", setMenu);
 			model.addAttribute("tanpinMenus", tanpinMenu);
 			model.addAttribute("dessertMenus", dessertMenu);
+			model.addAttribute("softDrinkMenus", softDrinkMenu);
+			model.addAttribute("whiskeyMenus", whiskeyMenu);
+			model.addAttribute("beerMenus", beerMenu);
+			model.addAttribute("nonAlcoholMenus", nonAlcoholMenu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

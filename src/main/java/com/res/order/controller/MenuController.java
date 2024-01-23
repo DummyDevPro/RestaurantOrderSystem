@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.res.order.dao.Menu;
 
@@ -39,6 +40,7 @@ public class MenuController {
 
 			while (rs.next()) {
 				Menu menuObj = new Menu();
+				menuObj.setMenuId(rs.getInt("menu_id"));
 				menuObj.setMenuName(rs.getString("menu_name"));
 				menuObj.setMenuPrice(rs.getString("menu_price"));
 				menuObj.setMenuCategory(rs.getInt("menu_category"));
@@ -101,5 +103,71 @@ public class MenuController {
 		} catch (Exception e) {
 		}
 		return "redirect:adminHome";
+	}
+
+	@GetMapping("/deletMenuAction")
+	public String deletMenuAction(@RequestParam("menuId") int menuId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+
+			String sql = "DELETE FROM all_menu WHERE menu_id = ?";
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, menuId);
+
+			pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:adminAllMenu";
+	}
+
+	@GetMapping("/editMenu")
+	public String toEditMenuPage(@RequestParam("menuId") int menuId, Model model) {
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+
+			String sql = "SELECT * FROM all_menu WHERE menu_id = ?";
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, menuId);
+
+			ResultSet rs = pstm.executeQuery();
+			Menu menu = new Menu();
+			if (rs.next()) {
+				menu.setMenuId(rs.getInt("menu_id"));
+				menu.setMenuName(rs.getString("menu_name"));
+				menu.setMenuPrice(rs.getString("menu_price"));
+				menu.setMenuCategory(rs.getInt("menu_category"));
+				menu.setMenuDetail(rs.getString("menu_detail"));
+			}
+			model.addAttribute("menuObj", menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "edit_menu_item";
+	}
+
+	@PostMapping("/updateMenuAction")
+	public String updateMenuAction(@ModelAttribute Menu menu) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+
+			String sql = "UPDATE all_menu SET menu_name = ?, menu_price = ?, menu_category = ?, menu_detail = ? WHERE menu_id = ?";
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, menu.getMenuName());
+			pstm.setString(2, menu.getMenuPrice());
+			pstm.setInt(3, menu.getMenuCategory());
+			pstm.setString(4, menu.getMenuDetail());
+			pstm.setInt(5, menu.getMenuId());
+
+			pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:adminAllMenu";
 	}
 }

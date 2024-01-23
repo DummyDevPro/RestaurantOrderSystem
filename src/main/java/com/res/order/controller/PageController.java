@@ -20,12 +20,10 @@ public class PageController {
 
 	@GetMapping("/addMenu")
 	public String toAddMenuPage(Model model) {
-		model.addAttribute("menuObj", new Menu());
+		Menu menu = new Menu();
+		menu.setMenuName("Good");
+		
+		model.addAttribute("menuObj", menu);
 		return "add_menu_item";
-	}
-
-	@GetMapping("/editMenu")
-	public String toEditMenuPage() {
-		return "edit_menu_item";
 	}
 }

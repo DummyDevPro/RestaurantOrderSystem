@@ -88,7 +88,7 @@
 	<div class="tab-content p-3" id="pills-tabContent">
 
 		<!-- セットメニュー -->
-		<div class="tab-pane fade show active" id="Set" role="tabpanel" aria-labelledby="pills-Set-tab">
+		<div class="tab-pane fade" id="Set" role="tabpanel" aria-labelledby="pills-Set-tab">
 			<!--Items Wrapper-->
 			<div class="d-flex flex-wrap gap-2">
 
@@ -103,9 +103,18 @@
 						<p style="margin: 0; padding: 0;" class="text-white text-center">
 							<span th:text="*{menuPrice}"></span>円
 						</p>
+						<p style="margin: 0; padding: 0;" class="text-white text-center">
+							<span>在庫：</span>
+							<span th:if="*{statusOfStock == 0}">なし</span>
+							<span th:if="*{statusOfStock == 1}">あり</span>
+						</p>
 						<div class="d-flex">
 							<a th:href="'editMenu?menuId=' + *{menuId}" class="btn btn-success rounded-0 flex-half">Edit</a>
 							<a th:href="'deletMenuAction?menuId=' + *{menuId}" class="btn btn-danger rounded-0 flex-half">Remove</a>
+						</div>
+						<div class="d-flex">
+							<a class="btn btn-warning form-control rounded-0" th:href="*{'updateStockStaus?menuId=' + menuId + '&status=1'}" th:if="*{statusOfStock == 0}">補充済</a>
+							<a class="btn btn-warning form-control rounded-0" th:href="*{'updateStockStaus?menuId=' + menuId + '&status=0'}" th:if="*{statusOfStock == 1}">売り切れ</a>
 						</div>
 					</div>
 				</div>
@@ -129,13 +138,21 @@
 						<p style="margin: 0; padding: 0;" class="text-white text-center">
 							<span th:text="*{menuPrice}"></span>円
 						</p>
+						<p style="margin: 0; padding: 0;" class="text-white text-center">
+							<span>在庫：</span>
+							<span th:if="*{statusOfStock == 0}">なし</span>
+							<span th:if="*{statusOfStock == 1}">あり</span>
+						</p>
 						<div class="d-flex">
 							<a th:href="'editMenu?menuId=' + *{menuId}" class="btn btn-success rounded-0 flex-half">Edit</a>
 							<a th:href="'deletMenuAction?menuId=' + *{menuId}" class="btn btn-danger rounded-0 flex-half">Remove</a>
 						</div>
+						<div class="d-flex">
+							<a class="btn btn-warning form-control rounded-0" th:href="*{'updateStockStaus?menuId=' + menuId + '&status=1'}" th:if="*{statusOfStock == 0}">補充済</a>
+							<a class="btn btn-warning form-control rounded-0" th:href="*{'updateStockStaus?menuId=' + menuId + '&status=0'}" th:if="*{statusOfStock == 1}">売り切れ</a>
+						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 

@@ -9,41 +9,62 @@ public class Menu {
 	private String menuPrice;
 	private int menuCategory;
 	private String menuDetail;
-		
+	private int statusOfStock;
+
 	public int getMenuId() {
 		return menuId;
 	}
+
 	public void setMenuId(int menuId) {
 		this.menuId = menuId;
 	}
+
 	public MultipartFile getMenuPhoto() {
 		return menuPhoto;
 	}
+
 	public void setMenuPhoto(MultipartFile menuPhoto) {
 		this.menuPhoto = menuPhoto;
 	}
+
 	public String getMenuName() {
 		return menuName;
 	}
+
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
+
 	public String getMenuPrice() {
 		return menuPrice;
 	}
+
 	public void setMenuPrice(String menuPrice) {
 		this.menuPrice = menuPrice;
 	}
+
 	public int getMenuCategory() {
 		return menuCategory;
 	}
+
 	public void setMenuCategory(int menuCategory) {
 		this.menuCategory = menuCategory;
 	}
+
 	public String getMenuDetail() {
 		return menuDetail;
 	}
+
 	public void setMenuDetail(String menuDetail) {
 		this.menuDetail = menuDetail;
 	}
+
+	public int getStatusOfStock() {
+		return statusOfStock;
+	}
+
+	public void setStatusOfStock(int statusOfStock) {
+		this.statusOfStock = statusOfStock;
+	}
+
 }

@@ -45,6 +45,7 @@ public class MenuController {
 				menuObj.setMenuPrice(rs.getString("menu_price"));
 				menuObj.setMenuCategory(rs.getInt("menu_category"));
 				menuObj.setMenuDetail(rs.getString("menu_detail"));
+				menuObj.setStatusOfStock(rs.getInt("status_of_stock"));
 
 				switch (menuObj.getMenuCategory()) {
 				case 0:
@@ -168,6 +169,27 @@ public class MenuController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return "redirect:adminAllMenu";
+	}
+	
+	@GetMapping("updateStockStaus")
+	public String updateStockStaus(
+			@RequestParam("menuId") int menuId,
+			@RequestParam("status") int status) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+
+			String sql = "UPDATE all_menu SET status_of_stock = ? WHERE menu_id = ?";
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, status);
+			pstm.setInt(2, menuId);
+
+			pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "redirect:adminAllMenu";
 	}
 }

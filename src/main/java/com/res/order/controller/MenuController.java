@@ -24,7 +24,7 @@ public class MenuController {
 	public String toAdminAllMenuPage(Model model) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "SELECT * FROM all_menu";
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class MenuController {
 	public String addMenuAction(@ModelAttribute Menu menu) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "INSERT INTO all_menu (menu_photo,menu_name,menu_price,menu_category,menu_detail) VALUES (?,?,?,?,?)";
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class MenuController {
 	public String deletMenuAction(@RequestParam("menuId") int menuId) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "DELETE FROM all_menu WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class MenuController {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "SELECT * FROM all_menu WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -158,7 +158,7 @@ public class MenuController {
 	public String updateMenuAction(@ModelAttribute Menu menu) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "UPDATE all_menu SET menu_name = ?, menu_price = ?, menu_category = ?, menu_detail = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -181,7 +181,7 @@ public class MenuController {
 			@RequestParam("status") int status) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "UPDATE all_menu SET status_of_stock = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);

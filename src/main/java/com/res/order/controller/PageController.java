@@ -21,8 +21,6 @@ public class PageController {
 	@GetMapping("/addMenu")
 	public String toAddMenuPage(Model model) {
 		Menu menu = new Menu();
-		menu.setMenuName("Good");
-		
 		model.addAttribute("menuObj", menu);
 		return "add_menu_item";
 	}

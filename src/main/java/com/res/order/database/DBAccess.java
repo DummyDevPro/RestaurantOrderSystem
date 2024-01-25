@@ -9,7 +9,7 @@ public class DBAccess {
 	public static ResultSet loginByUserInfo(String userId, String userPwd, int userRole) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/res_order_app", "root", "root");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
 			String sql = "SELECT * FROM account WHERE user_id = ? AND user_pwd = ? AND user_role = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);

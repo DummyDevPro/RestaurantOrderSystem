@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,8 @@ public class MenuController {
 				menuObj.setMenuCategory(rs.getInt("menu_category"));
 				menuObj.setMenuDetail(rs.getString("menu_detail"));
 				menuObj.setStatusOfStock(rs.getInt("status_of_stock"));
+				
+				menuObj.setPhotoBase64String(Base64.encodeBase64String(rs.getBytes("menu_photo")));
 
 				switch (menuObj.getMenuCategory()) {
 				case 0:

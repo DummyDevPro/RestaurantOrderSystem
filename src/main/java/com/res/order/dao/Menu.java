@@ -4,12 +4,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Menu {
 	private int menuId;
+	
+	// html to database
 	private MultipartFile menuPhoto;
+	
 	private String menuName;
 	private String menuPrice;
 	private int menuCategory;
 	private String menuDetail;
 	private int statusOfStock;
+	
+	// data base to html
+	private String photoBase64String;
 
 	public int getMenuId() {
 		return menuId;
@@ -67,4 +73,11 @@ public class Menu {
 		this.statusOfStock = statusOfStock;
 	}
 
+	public String getPhotoBase64String() {
+		return photoBase64String;
+	}
+
+	public void setPhotoBase64String(String photoBase64String) {
+		this.photoBase64String = photoBase64String;
+	}
 }

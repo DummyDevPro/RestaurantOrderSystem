@@ -25,4 +25,19 @@ public class LoginController {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/customerLoginAction")
+	public String customerLoginAction(@RequestParam("user_id") String userId, @RequestParam("user_pwd") String pwd) {
+		try {
+			ResultSet rs = DBAccess.loginByUserInfo(userId, pwd, 1);
+			// If result set is not null
+			// And result set has any record
+			if (rs != null && rs.next()) {
+				return "redirect:allMenu";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/";
+	}
 }

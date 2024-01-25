@@ -29,7 +29,7 @@
 		<!-- お客様 -->
 		<div class="tab-pane fade show active" id="v-pills-お客様" role="tabpanel" aria-labelledby="v-pills-お客様-tab">
 			<div class="bg-white p-5 border rounded shadow">
-				<form action="loginAction">
+				<form action="customerLoginAction">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control bg-light fs-6 fw-light  smaller-placeholder"
 							placeholder="ユザIDを入力してください。" name="user_id" id="floatingInput" required>
@@ -39,23 +39,8 @@
 						<input type="password" class="form-control bg-light fs-6 fw-light  smaller-placeholder"
 							placeholder="パスワード入力してください。" name="user_pwd" id="floatingInput">
 					</div>
-
-					<div class="input-group mb-3">
-						<select class="form-select" aria-label="テーブル番号を選んでください">
-							<option value="" disabled selected>テーブル番号</option>
-							<option value="one">1</option>
-							<option value="two">2</option>
-							<option value="three">3</option>
-							<option value="four">4</option>
-							<option value="five">5</option>
-							<option value="six">6</option>
-							<option value="seven">7</option>
-							<option value="eight">8</option>
-							<option value="nine">9</option>
-							<option value="ten">10</option>
-						</select>
-					</div>
-					<a href="#" class="btn btn-primary col-12">ログイン</a>
+					
+					<button type="submit" class="btn btn-primary col-12">ログイン</button>
 				</form>
 			</div>
 		</div>

@@ -11,7 +11,7 @@ public class DBAccess {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "SELECT * FROM account WHERE user_id = ? AND user_pwd = ? AND user_role = ?";
+			String sql = "SELECT * FROM res_order_app.account WHERE user_id = ? AND user_pwd = ? AND user_role = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, userId);
 			pstm.setString(2, userPwd);

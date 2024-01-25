@@ -22,7 +22,7 @@ public class CustomerMenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "SELECT * FROM all_menu";
+			String sql = "SELECT * FROM res_order_app.all_menu";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 
 			ResultSet rs = pstm.executeQuery();

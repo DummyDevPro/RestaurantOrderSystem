@@ -26,7 +26,7 @@ public class MenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "SELECT * FROM all_menu";
+			String sql = "SELECT * FROM res_order_app.all_menu";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 
 			ResultSet rs = pstm.executeQuery();
@@ -94,7 +94,7 @@ public class MenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "INSERT INTO all_menu (menu_photo,menu_name,menu_price,menu_category,menu_detail) VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO res_order_app.all_menu (menu_photo,menu_name,menu_price,menu_category,menu_detail) VALUES (?,?,?,?,?)";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setBytes(1, menu.getMenuPhoto().getBytes());
 			pstm.setString(2, menu.getMenuName());
@@ -116,7 +116,7 @@ public class MenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "DELETE FROM all_menu WHERE menu_id = ?";
+			String sql = "DELETE FROM res_order_app.all_menu WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, menuId);
 
@@ -161,7 +161,7 @@ public class MenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "UPDATE all_menu SET menu_name = ?, menu_price = ?, menu_category = ?, menu_detail = ? WHERE menu_id = ?";
+			String sql = "UPDATE res_order_app.all_menu SET menu_name = ?, menu_price = ?, menu_category = ?, menu_detail = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, menu.getMenuName());
 			pstm.setString(2, menu.getMenuPrice());
@@ -184,7 +184,7 @@ public class MenuController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
 
-			String sql = "UPDATE all_menu SET status_of_stock = ? WHERE menu_id = ?";
+			String sql = "UPDATE res_order_app.all_menu SET status_of_stock = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, status);
 			pstm.setInt(2, menuId);

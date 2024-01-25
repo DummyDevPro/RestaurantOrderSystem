@@ -105,6 +105,7 @@ public class MenuController {
 			pstm.executeUpdate();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return "redirect:adminHome";
 	}

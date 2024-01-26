@@ -24,8 +24,9 @@ public class MenuController {
 	public String toAdminAllMenuPage(Model model) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "SELECT * FROM res_order_app.all_menu";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -47,7 +48,7 @@ public class MenuController {
 				menuObj.setMenuCategory(rs.getInt("menu_category"));
 				menuObj.setMenuDetail(rs.getString("menu_detail"));
 				menuObj.setStatusOfStock(rs.getInt("status_of_stock"));
-				
+
 				menuObj.setPhotoBase64String(Base64.encodeBase64String(rs.getBytes("menu_photo")));
 
 				switch (menuObj.getMenuCategory()) {
@@ -92,8 +93,9 @@ public class MenuController {
 	public String addMenuAction(@ModelAttribute Menu menu) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "INSERT INTO res_order_app.all_menu (menu_photo,menu_name,menu_price,menu_category,menu_detail) VALUES (?,?,?,?,?)";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setBytes(1, menu.getMenuPhoto().getBytes());
@@ -114,8 +116,9 @@ public class MenuController {
 	public String deletMenuAction(@RequestParam("menuId") int menuId) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "DELETE FROM res_order_app.all_menu WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, menuId);
@@ -132,8 +135,9 @@ public class MenuController {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "SELECT * FROM all_menu WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, menuId);
@@ -159,8 +163,9 @@ public class MenuController {
 	public String updateMenuAction(@ModelAttribute Menu menu) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "UPDATE res_order_app.all_menu SET menu_name = ?, menu_price = ?, menu_category = ?, menu_detail = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, menu.getMenuName());
@@ -175,15 +180,14 @@ public class MenuController {
 		}
 		return "redirect:adminAllMenu";
 	}
-	
+
 	@GetMapping("updateStockStaus")
-	public String updateStockStaus(
-			@RequestParam("menuId") int menuId,
-			@RequestParam("status") int status) {
+	public String updateStockStaus(@RequestParam("menuId") int menuId, @RequestParam("status") int status) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "UPDATE res_order_app.all_menu SET status_of_stock = ? WHERE menu_id = ?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, status);
@@ -193,7 +197,7 @@ public class MenuController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "redirect:adminAllMenu";
 	}
 }

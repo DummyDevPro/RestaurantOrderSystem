@@ -20,8 +20,9 @@ public class CustomerMenuController {
 	public String toAdminAllMenuPage(Model model) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://res-order-app-dummy-hmm.a.aivencloud.com:16952/res_order_app", "avnadmin", "AVNS_0rTLgFKgFz4SJvM3QIW");
-
+			Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://mysql-14395797-dummy-hmm-2024.a.aivencloud.com:12571/res_order_app?sslmode=require",
+					"avnadmin", "AVNS_9GyEO8aN8-iRO0_Abuo");
 			String sql = "SELECT * FROM res_order_app.all_menu";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -43,7 +44,7 @@ public class CustomerMenuController {
 				menuObj.setMenuCategory(rs.getInt("menu_category"));
 				menuObj.setMenuDetail(rs.getString("menu_detail"));
 				menuObj.setStatusOfStock(rs.getInt("status_of_stock"));
-				
+
 				menuObj.setPhotoBase64String(Base64.encodeBase64String(rs.getBytes("menu_photo")));
 
 				switch (menuObj.getMenuCategory()) {
